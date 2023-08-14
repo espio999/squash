@@ -1,0 +1,247 @@
+<html>
+<head>
+	<meta http-equiv = "Content-Type" content = "text/html; charset=x-sjis">
+	<title>Personal Perspective - Squash Body</title>
+	<link
+		rel = "stylesheet"
+		type = "text/css"
+		href = "style.css">
+	<SCRIPT Language = "JavaScript">
+		var flg;
+		var score;
+		var margin;
+		var background_height;
+		var background_width;
+		var background_x;
+		var backgournd_y;
+		var background_left;
+		var background_right;
+		var background_top;
+		var background_bottom;
+		var ball_height;
+		var ball_width;
+		var ball_x;
+		var ball_y;
+		var speed;
+		var max_speed;
+		var direction_x;
+		var direction_y;
+		var pad_height;
+		var pad_width;
+		var pad_x;
+		var pad_y;
+
+		flg = false;
+		window.document.onmousemove = move_pad;
+
+		function init()
+		{
+			score = 0;
+			margin = 4;
+
+			background_height = parseInt(background.style.height);
+			background_width = parseInt(background.style.width);
+			background_x = parseInt(background.style.left);
+			background_y = parseInt(background.style.top);
+			background_left = background_x;
+			background_right = background_x + 168;
+			background_top = background_y;
+			background_bottom = background_y + 214;
+
+			ball_height = parseInt(ball.style.height);
+			ball_width = parseInt(ball.style.width);
+			ball_x = background_x + 5;
+			ball_y = background_y + 5;
+
+			speed = 3;
+			max_speed = 100;
+
+			direction_x = 1;
+			direction_y = 1;
+
+			pad_height = parseInt(pad.style.height);
+			pad_width = parseInt(pad.style.width);
+			pad_x = background_x + (background_width / 2) - (pad_width / 2);
+			pad_y = background_bottom - 8 - 6;
+
+			document.my_form.my_score.value = score;
+		}
+
+		function move_pad()
+		{
+			if (flg == false){
+				return;
+			}
+
+			pad_x = event.x - (pad_width / 2);
+
+			if (pad_x <= background_left){
+				pad_x = background_left;
+			}
+
+			if (pad_x >= (background_right - pad_width)){
+				pad_x = background_right - pad_width;
+			}
+		}
+
+		function move_ball()
+		{
+			ball_x = ball_x + (direction_x * speed);
+			ball_y = ball_y + (direction_y * speed);
+			speed += 0.02;
+
+			if (speed >= max_speed){
+				speed = max_speed;
+			}
+		}
+
+		function check()
+		{
+			if (ball_y <= background_top  ){
+				ball_y = background_top;
+				direction_y *= -1;
+			}
+
+			if (ball_x <= background_left ){
+				ball_x = background_left;
+				direction_x *= -1;
+			}
+
+			if (ball_x + ball_width >= background_right){
+				ball_x = background_right - ball_width;
+				direction_x *= -1;
+			}
+
+			if ((ball_y + ball_height >= pad_y) && ((ball_x + (ball_width / 2) >= pad_x) && (ball_x + (ball_width / 2) <= pad_x + pad_width))){
+				ball_y = pad_y - 2;
+				direction_y *= -1;
+				score += 10;
+				document.my_form.my_score.value = score;
+			}
+
+			if (ball_y > background_bottom){
+				alert("GAME OVER\nYour Score is " + score + " pts.");
+				flg = false;
+			}
+		}
+
+		function draw()
+		{
+			pad.style.left  = pad_x;
+			pad.style.top = pad_y;
+
+			ball.style.left = ball_x;
+			ball.style.top  = ball_y;
+		}
+
+		function game_start()
+		{
+			init();
+			flg = true;
+			timerID = setTimeout("main()",50);
+		}
+
+		function main()
+		{
+			if (flg == false){
+				return;
+			}
+
+			move_ball();
+			draw();
+			check();
+			clearTimeout(timerID);
+			timerID = setTimeout("main()",50);
+		}
+	</SCRIPT>
+</head>
+<body>
+	<div
+		id = "background"
+		style = "position: absolute;
+			left: 0;
+			top: 50;
+			width: 168;
+			height: 240;
+			border-width: 1;
+			border-style: solid;
+			border-color: white;
+			z-index: 2">
+	</div>
+	<div
+		id = "pad"
+		style = "position: absolute;
+			left: 4;
+			top: 250;
+			width: 24;
+			height: 8;
+			z-index: 9">
+			<img
+				src = "image/white_dot.gif"
+				width = "24"
+				height = "8">
+	</div>
+	<div
+		id = "ball"
+		style = "position: absolute;
+			left: 4;
+			top: 54;
+			width: 6;
+			height: 6;
+			z-index: 8">
+			<img
+				src = "image/white_dot.gif"
+				width = "6"
+				height = "6">
+	</div>
+	<div
+		style = "position: absolute;
+			text-align: center;
+			left: 170;">
+		<table
+			align = center
+			vliagn = middle
+			vspace = 0
+			hspace = 0
+			cellpadding = 0
+			cellspacing = 0>
+			<tr>
+				<td height = 95>
+				</td>
+			</tr>
+			<tr>
+				<td
+					align = center
+					valign = middle
+					height = 50>
+					<form
+						class = TopText
+						name = "my_form">
+						SCORE:
+						<input
+							class = TopText
+							name = "my_score"
+							type = "text"
+							size = "5">
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td
+					align = center
+					valign = middle
+					height = 50>
+					<button
+						TYPE = "button"
+						onClick = "JavaScript: game_start()">
+						<span class = TopText>Start!</span>
+					</button>
+				</td>
+			</tr>
+			<tr>
+				<td height = 95></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

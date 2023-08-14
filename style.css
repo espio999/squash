@@ -1,0 +1,53 @@
+  @font-face {
+    font-family: Dragonwick;
+    font-style:  normal;
+    font-weight: normal;
+    src: url(http://www.mars.dti.ne.jp/~yuichiro/font/DRAGONW0.eot);
+  }
+
+.Title{
+	font-family: Dragonwick, Arial, Helvetica, Chicago;
+	font-size: 18px;
+	font-style: italic;
+}
+
+.SubTitle{
+	font-family:Arial, Helvetica, Chicago;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.TopText{
+	font-family: Arial, Helvetica, Chicago;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.Return{
+	font-family:Arial, Helvetica, Chicago;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+body{
+	color: white;
+	background-color: mediumblue;
+}
+
+a:link{
+	color: white;
+	font-style: normal;
+	text-decoration: none;
+}
+
+a:visited{
+	color: white;
+	font-style: normal;
+	text-decoration: none;
+}
+
+a:active{
+	color: white;
+	font-style: normal;
+	text-decoration: none;
+}
