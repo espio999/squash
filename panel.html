@@ -1,0 +1,35 @@
+<div class="pf-header">
+  <span class="pf-title">TL フィルター</span>
+  <button id="pf-close" class="pf-close">✕</button>
+</div>
+<div class="pf-group">
+  <label class="pf-label">パーク (_parkName)</label>
+  <input type="text" id="pf-park-kw" placeholder="キーワード">
+  <div class="pf-modes">
+    <label><input type="radio" name="pf-park-mode" value="off" checked> OFF</label>
+    <label><input type="radio" name="pf-park-mode" value="include"> 絞り込み</label>
+    <label><input type="radio" name="pf-park-mode" value="exclude"> 除外</label>
+  </div>
+</div>
+<div class="pf-group">
+  <label class="pf-label">投稿者 (_authorName)</label>
+  <input type="text" id="pf-author-kw" placeholder="キーワード">
+  <div class="pf-modes">
+    <label><input type="radio" name="pf-author-mode" value="off" checked> OFF</label>
+    <label><input type="radio" name="pf-author-mode" value="include"> 絞り込み</label>
+    <label><input type="radio" name="pf-author-mode" value="exclude"> 除外</label>
+  </div>
+</div>
+<div class="pf-group">
+  <label class="pf-label">コンテキスト (_postContext)</label>
+  <input type="text" id="pf-context-kw" placeholder="キーワード">
+  <div class="pf-modes">
+    <label><input type="radio" name="pf-context-mode" value="off" checked> OFF</label>
+    <label><input type="radio" name="pf-context-mode" value="include"> 絞り込み</label>
+    <label><input type="radio" name="pf-context-mode" value="exclude"> 除外</label>
+  </div>
+</div>
+<div class="pf-actions">
+  <button id="pf-apply" class="pf-btn">適用</button>
+  <button id="pf-reset" class="pf-btn">リセット</button>
+</div>
