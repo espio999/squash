@@ -1,5 +1,5 @@
 (function() {
-  // パネルをドラッグ移動できるようにする処理
+  // ドラッグ可能にする関数
   function makeDraggable(element, handle) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     handle.onmousedown = dragMouseDown;
@@ -30,6 +30,12 @@
     }
   }
 
-  // HTML追加後にヘッダーを掴んで移動できるように指定
-  makeDraggable(container, container.querySelector(".pf-header"));
+  // 要素を取得してドラッグを有効化
+  const panel = document.getElementById("parks-filter-panel");
+  if (panel) {
+    const header = panel.querySelector(".pf-header");
+    if (header) {
+      makeDraggable(panel, header);
+    }
+  }
 })();
