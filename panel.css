@@ -13,6 +13,7 @@
   font-size: 13px;
   width: 280px;
 }
+/* ===== default ===== */
 /*
 #parks-filter-panel .pf-header {
   display: flex;
@@ -23,27 +24,35 @@
   padding-bottom: 5px;
 }
 */
+
+/* ===== hover gradaton ===== */
 #parks-filter-panel .pf-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  border-bottom: 1px solid #d4e7d0; /* 線も少し緑寄りに合わせると綺麗です */
-  padding: 8px 10px; /* 全体にパディングを入れて領域を確保 */
+  border-bottom: 1px solid #e0e0e0;
+  padding: 8px 10px;
   
-  /* 背景色と文字色 */
-  background-color: #f2f8f1; /* 極めて薄い緑色 */
+  /* グラデーションで少し立体感を出す */
+  background: linear-gradient(180deg, #f7faf6 0%, #edf5eb 100%);
   color: #4C9D33;
-  
-  /* ハンドラ（掴みどころ）としての視覚効果 */
-  cursor: grab; /* マウスホバー時に「手」のカーソルにする */
-  border-radius: 4px 4px 0 0; /* 角丸パネルの場合の上部フィット */
+  cursor: grab;
+  transition: background-color 0.2s ease;
 }
 
-/* ドラッグ中のカーソル指定 */
+#parks-filter-panel .pf-header:hover {
+  background: #e4f0e2; /* ホバーで少し色を濃く */
+}
+
 #parks-filter-panel .pf-header:active {
   cursor: grabbing;
+  background: #d8e8d5; /* 掴んだ（クリックした）瞬間 */
 }
+
+/* ===== minimal ===== */
+/*
+*/
 
 #parks-filter-panel .pf-title {
   color: #4C9D33;
