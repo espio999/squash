@@ -25,34 +25,22 @@
 }
 */
 
-/* ===== hover gradaton ===== */
+/* ===== minimum ===== */
 #parks-filter-panel .pf-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 8px 10px;
+  border-bottom: 1px solid #eee;
+  padding: 6px 10px 6px 12px;
   
-  /* グラデーションで少し立体感を出す */
-  background: linear-gradient(180deg, #f7faf6 0%, #edf5eb 100%);
+  /* 左側にアクセントライン */
+  border-left: 4px solid #4C9D33;
+  background-color: #f9fbf9;
+  
   color: #4C9D33;
   cursor: grab;
-  transition: background-color 0.2s ease;
 }
-
-#parks-filter-panel .pf-header:hover {
-  background: #e4f0e2; /* ホバーで少し色を濃く */
-}
-
-#parks-filter-panel .pf-header:active {
-  cursor: grabbing;
-  background: #d8e8d5; /* 掴んだ（クリックした）瞬間 */
-}
-
-/* ===== minimal ===== */
-/*
-*/
 
 #parks-filter-panel .pf-title {
   color: #4C9D33;
